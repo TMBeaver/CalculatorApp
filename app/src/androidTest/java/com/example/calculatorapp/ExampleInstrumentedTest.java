@@ -18,9 +18,19 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
     @Test
-    public void useAppContext() {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.calculatorapp", appContext.getPackageName());
+    public void testGetResultValidExpression() {
+        MainActivity mainActivity = new MainActivity();
+        String result = mainActivity.getResult("2+2");
+        assertEquals("4", result);
+    } /* Checks if the method correctly evaluates a valid expression (2+2) and returns the expected result.*/
+
+    @Test
+    public void testGetResultInvalidExpression() {
+        MainActivity mainActivity = new MainActivity();
+        String result = mainActivity.getResult("invalidExpression");
+        assertEquals("Error", result);
+        /*Checks if the method returns "Error" for an invalid expression.*/
+
+
     }
 }
